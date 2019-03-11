@@ -1,0 +1,51 @@
+Here is a set of scripts that simplify work with Cloudera docker container image.
+
+======
+Description
+======
+
+Below is description of what each script does:
+
+**create** - creates docker container with Cloudera QuickStart image inside.
+It maps several ports from docker instance to the host machine for make it
+possible to interact with different Cloudera components through Web interface.
+
+NOTE: it maps **/root/cloudera_docker/share** directory to the docker image
+instance. You can use it for sharing data between docker machine and host machine.
+
+**remove** - destroys existing docker instance.
+
+**list** - shows all the existing docker images with their status.
+
+**start** - actually runs the existing docker instance. More likely you
+would call it after **create**.
+
+**pause** - pause started instance.
+
+**login** - get shell of the started container.
+
+======
+Workflow
+======
+
+1. Create new Cloudera QuickStart docker instance with given name using **create** script.
+You can use name that corresponds your's laboratory work number.
+
+2. Start the instance using **start** script. Check **list** output: now you should see
+the entry with yours image name and status "Up". Please check that all the port mappings
+are exist.
+
+3. You can now login into the shell of the running instance using **login** script
+   OR
+   You can access Apache Hue Web UI through firefox by requesting URL "localhost:8888" by default.
+
+4. You can use "/root/cloudera_docker/share" directory to share data between host image
+and your docker instance.
+
+NOTE 1: when one instance is already in "Up" state in the **list** output, it is NOT POSSIBLE
+to run another instance with the same port mapping as the running one. Now the only workaround
+is to "pause" the running container (using **pause** script) before starting the new one.
+
+NOTE 2: if you are trying to access the Web UI through some X11 application (e.g. firefox) run
+it from non-root user.
+
