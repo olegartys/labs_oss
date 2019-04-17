@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ $# != 1 ]]; then
+	echo "$0: specify container name"
+	exit -1
+fi
+
+docker create -p 7180:7180 -p 8888:8888 -p 8080:8080 -p 80:80 -v /root/cloudera_docker/share:/root --hostname=quickstart.cloudera --privileged=true --name "$1" -ti cloudera/quickstart /usr/bin/docker-quickstart
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ $# != 1 ]]; then
+        echo "$0: specify container name"
+        exit -1
+fi
+
+docker pause "$1"
+
