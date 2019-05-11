@@ -1,0 +1,43 @@
+CREATE DATABASE IF NOT EXISTS watson;
+
+DROP TABLE IF EXISTS watson.blogs_data;
+DROP TABLE IF EXISTS watson.blogs_data_preprocessed;
+
+-- Create table from raw JSON Array
+
+CREATE EXTERNAL TABLE watson.blogs_data (
+	myarray ARRAY <STRUCT<
+		IsAdult:INT,
+		PostSize:BIGINT,
+		Crawled:STRING,
+		Country:STRING,
+		SubjectHtml:STRING,
+		Language:STRING,
+		Inserted:STRING,
+		Tags:STRING,
+		Type:STRING,
+		Published:STRING,
+		Url:STRING
+	>>
+)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+LOCATION '/user/olegartys/blogs_data/db';
+
+-- Create table from set of separate JSON entries
+
+CREATE EXTERNAL TABLE watson.blogs_data_preprocessed (
+        IsAdult INT,
+        PostSize BIGINT,
+        Crawled STRING,
+        Country STRING,
+        SubjectHtml STRING,
+        Language STRING,
+        Inserted STRING,
+        Tags STRING,
+        Type STRING,
+        Published STRING,
+        Url STRING
+)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+LOCATION '/user/olegartys/blogs_data/db';
+
