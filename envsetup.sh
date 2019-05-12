@@ -38,3 +38,9 @@ function run_hive()
 }
 export -f run_hive
 
+function hdfs_put_home()
+{
+    hdfs dfs -put $@ /user/${USER}
+}
+export -f hdfs_put_home
+
