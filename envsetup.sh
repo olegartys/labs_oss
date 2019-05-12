@@ -6,6 +6,10 @@ export LABS_ROOT_DIR=$(pwd)
 export LABS_LABS_DIR=${LABS_ROOT_DIR}/labs
 export LABS_JAR_LIBS_DIR=${LABS_ROOT_DIR}/other
 
+# Copy hive-hcatalog-core.jar into the Java libs dir
+
+cp ${CLOUDERA_ROOT_DIR}/lib/hive-hcatalog/share/hcatalog/hive-hcatalog-core.jar ${LABS_JAR_LIBS_DIR}/
+
 # Simple unified logger
 
 function log()
@@ -27,7 +31,7 @@ export -f log_error
 
 function run_hive()
 {
-    local HCATALOG_CORE_JAR_PATH=${CLOUDERA_ROOT_DIR}/lib/hive-hcatalog/share/hcatalog/hive-hcatalog-core.jar
+    local HCATALOG_CORE_JAR_PATH=${LABS_JAR_LIBS_DIR}/hive-hcatalog-core.jar
     local HIVE_RUN_SCRIPT_PATH=${CLOUDERA_ROOT_DIR}/bin/hive
 
     HIVE_AUX_JARS_PATH=$HCATALOG_CORE_JAR_PATH:$BRICKHOUSE_JAR_PATH:$HIVE_AUX_JARS_PATH $HIVE_RUN_SCRIPT_PATH $@
