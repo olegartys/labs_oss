@@ -22,6 +22,9 @@ run_hive -f ${SCRIPT_DIR}/scripts/create_json_tables.sql
 log "Running Hive load_data.sql..."
 run_hive -f ${SCRIPT_DIR}/scripts/load_json_data.sql
 
-log "Running pyspark script spark_data_upload.py"
-${CLOUDERA_ROOT_DIR}/bin/spark-submit ${SCRIPT_DIR}/scripts/load_json_data_spark.py ${LABS_ROOT_DIR}/data/IBMWatson/blogs-data-json-arr.txt ${LAB_HIVE_JSON_ARRAY_TABLE_NAME}
+log "Running pyspark script spark_data_upload.py for uploading blogs-data"
+${CLOUDERA_ROOT_DIR}/bin/spark-submit ${SCRIPT_DIR}/scripts/load_json_data_spark.py ${LABS_ROOT_DIR}/data/IBMWatson/blogs-data-json-arr.txt ${LAB_HIVE_BLOGS_TABLE_NAME}
+
+log "Running pyspark scrpit spark_data_upload.py for uploading news-data"
+${CLOUDERA_ROOT_DIR}/bin/spark-submit ${SCRIPT_DIR}/scripts/load_json_data_spark.py ${LABS_ROOT_DIR}/data/IBMWatson/news-data.txt ${LAB_HIVE_NEWS_TABLE_NAME}
 

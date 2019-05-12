@@ -6,8 +6,10 @@
 export LAB_HIVE_DB_NAME=${USER}_watson
 
 # Table names: for raw JSON and JSON array examples
-export LAB_HIVE_JSON_ARRAY_TABLE_NAME=${LAB_HIVE_DB_NAME}.blogs_data_json_arr
-export LAB_HIVE_JSON_RAW_TABLE_NAME=${LAB_HIVE_DB_NAME}.blogs_data_json_raw
+export LAB_HIVE_BLOGS_TABLE_NAME=${LAB_HIVE_DB_NAME}.blogs_data
+export LAB_HIVE_BLOGS_TABLE_NAME_RAW=${LAB_HIVE_DB_NAME}.blogs_data_json_raw
+
+export LAB_HIVE_NEWS_TABLE_NAME=${LAB_HIVE_DB_NAME}.news_data
 
 # Path in HDFS to load original data
 export LAB_HIVE_HDFS_FILES_STORAGE_PATH=/user/${USER}/blogs_data

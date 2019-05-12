@@ -20,5 +20,5 @@ SELECT to_json(
 		'Published', t.published,
 		'Url', t.url
 	)
-) FROM ${env:LAB_HIVE_JSON_ARRAY_TABLE_NAME} as t; -- do not matter what the table of blogs_data_* is used
+) FROM ${env:LAB_HIVE_BLOGS_TABLE_NAME} as t; -- do not matter what the table of blogs_data_* is used
 
