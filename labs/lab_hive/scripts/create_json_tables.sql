@@ -5,6 +5,9 @@ CREATE DATABASE IF NOT EXISTS ${env:LAB_HIVE_DB_NAME};
 -- DROP TABLE IF EXISTS ${env:LAB_HIVE_BLOGS_TABLE_NAME};
 DROP TABLE IF EXISTS ${env:LAB_HIVE_BLOGS_TABLE_NAME_RAW};
 
+-- NOTE: this code is kept for history. As for now
+-- LAB_HIVE_BLOGS_TABLE_NAME is create from Spark script.
+
 -- Create table from JSON Array
 
 --CREATE EXTERNAL TABLE ${env:LAB_HIVE_BLOGS_TABLE_NAME} (
