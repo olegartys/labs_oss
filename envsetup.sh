@@ -1,5 +1,12 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+if [[ "${DIR}" != "$(pwd)" ]]; then
+    echo "Source script from the directory where it is placed!"
+    return -1
+fi
+
 export CLOUDERA_ROOT_DIR=/opt/cloudera/parcels/CDH
 
 export LABS_ROOT_DIR=$(pwd)
