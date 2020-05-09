@@ -44,3 +44,18 @@ function hdfs_put_home()
 }
 export -f hdfs_put_home
 
+function hdfs_mkdir()
+{
+    hdfs dfs -mkdir $@
+}
+export -f hdfs_mkdir
+
+# Check if directory for the current user exists in /user/${USER}.
+# If not -- create it
+
+hdfs dfs -test -d /user/${USER}
+if [ $? != 0 ]; then
+    log "HDFS working directory for ${USER} does not exist, creating it..."
+    HADOOP_USER_NAME=hdfs hdfs_mkdir "/user/${USER}"
+    HADOOP_USER_NAME=hdfs hdfs dfs -chown ${USER}:${USER} /user/${USER}
+fi
