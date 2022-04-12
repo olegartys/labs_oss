@@ -31,7 +31,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <eclipse.output.directory>eclipse-classes</eclipse.output.directory>
     <hive.version>0.12.0-cdh5.0.1-SNAPSHOT</hive.version>
-    <hadoop.version>2.3.0-cdh5.0.1-SNAPSHOT</hadoop.version>
+    <hadoop.version>3.2.3</hadoop.version>
   </properties>
 
   <build>
